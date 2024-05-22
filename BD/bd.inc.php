@@ -1,5 +1,5 @@
 <?php
-include_once "../lib/functions.php";
+// include_once "../lib/functions.php";
 function conectar()
 {
     try {
@@ -13,6 +13,9 @@ function conectar()
         echo $e->getMessage();
     }
 }
+
+
+function crearPabellon ($)
 
 
 

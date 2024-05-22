@@ -2,9 +2,11 @@
 session_start();
 include_once './BD/user.inc.php';
 $user = $_POST['login'];
-$contraseña = $_POST['contraseña'];
-$userCheked =checkLogin($user, $contraseña);
-if ($userCheked!=null) {
+$contrasena = $_POST['contrasena'];
+$userCheked = checkLogin($user, $contrasena);
+
+
+if ($userCheked != null) {
     $_SESSION['userCheked'] = $userCheked;
     header("Location: ./views/inicio.php");
     // exit;
@@ -13,4 +15,3 @@ if ($userCheked!=null) {
     header("refresh:3;url=index.php");
     // exit;
 }
-?>

@@ -1,8 +1,8 @@
 <?php
 include 'bd.inc.php';
 
-function checkLogin($nre, $passworld)
-{
+function checkLogin($nre, $contrasena)
+{   
     // Conectar a la base de datos
     $pdo = conectar();
 
@@ -26,7 +26,7 @@ function checkLogin($nre, $passworld)
     print_r($user);
 
     // Verificar si el usuario existe y la contraseña es correcta
-    if ($user['passworld'] == $passworld) {
+    if (password_verify($contrasena, $user['passworld'])) {
         return $user;
     } else {
         return null;
@@ -40,7 +40,7 @@ function checkLogin($nre, $passworld)
 
 function createUser($nre, $contrasena, $nombre, $apellidos, $admin)
 {
-    $contrasena=sha1($contrasena);
+    $contrasena=password_hash($contrasena, PASSWORD_DEFAULT);
     $sql = conectar()->prepare("INSERT INTO `usuario`(`nre`, `passworld`, `nombre`, `apellidos`, `admin`) VALUES (:nre,:contrasena,:nombre,:apellidos,:admin)");
     $sql->bindValue(":nre", $nre);
     $sql->bindValue(":contrasena", $contrasena);

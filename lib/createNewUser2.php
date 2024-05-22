@@ -1,8 +1,8 @@
 <?php
-    require_once './comprobador.php';
+    require_once '../comprobador.php';
     include_once '../BD/user.inc.php';
 
-    $user=$_POST['user'];
+    $nre=$_POST['nre'];
     $contrasena=$_POST['contrasena'];
     $nombre=$_POST['nombre'];
     $apellidos=$_POST['apellidos'];
@@ -10,8 +10,10 @@
 
     try{
         createUser($nre, $contrasena, $nombre, $apellidos, $admin);
+        header("Location: ./views/inicio.php");
     }catch(PDOException $e){
         $e->getMessage();
+        
     }
 
     

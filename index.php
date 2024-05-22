@@ -21,7 +21,7 @@
         <input type="text" name="login" id="login" required>
         <br>
         <label for="contraseña">Contraseña</label>
-        <input type="password" name="contraseña" id="contraseña" required>
+        <input type="password" name="contrasena" id="contrasena" required>
         <br>
         <input type="submit" value="Login">
     </form>
