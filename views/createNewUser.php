@@ -1,3 +1,7 @@
+<?php 
+require_once '../comprobador.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +10,7 @@
     <title>Formulario de Login</title>
     <script>
     function validateForm(event) {
-        var user = document.getElementById('user').value;
+        var user = document.getElementById('nre').value;
         var contrasena = document.getElementById('contrasena').value;
         if (!user || !contrasena) {
             alert('Por favor, completa todos los campos.');

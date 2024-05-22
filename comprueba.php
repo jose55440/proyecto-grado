@@ -12,6 +12,6 @@ if ($userCheked != null) {
     // exit;
 } else {
     echo "Usuario/a y/o contraseña incorrectos";
-    header("refresh:3;url=index.php");
+    header("refresh:4;url=index.php");
     // exit;
 }

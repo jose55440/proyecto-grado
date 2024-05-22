@@ -12,7 +12,11 @@ require_once '../comprobador.php';
 <body>
     <?php if($_SESSION['userCheked']['admin']==true) { ?>
         <a href='./createNewUser.php'>Crear Usuario</a>
+        <a href="./createNewPabellon.php">Crear Pabellon</a>
+        <a href="./createNewAula.php">Crear Aula</a>
+
     <?php } ?>
+    <a href="../cerrarSession.php">Cerrar Sesion</a>
     <h1><strong>Bienvenido: </strong> <?php echo $_SESSION['userCheked']['nombre']; ?></h1>
     
 </body>

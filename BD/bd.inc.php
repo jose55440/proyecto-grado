@@ -15,7 +15,7 @@ function conectar()
 }
 
 
-function crearPabellon ($)
+
 
 
 
