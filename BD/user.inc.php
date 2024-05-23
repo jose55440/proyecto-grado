@@ -36,6 +36,26 @@ function checkLogin($nre, $contrasena)
 
 
 
+function checkUser($nre)
+{
+    $sql = conectar()->prepare("SELECT COUNT(*) as count FROM usuario WHERE nre = :nre");
+    $sql->bindValue(":nre", $nre);
+    try {
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_ASSOC);
+        if ($result['count'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        throw new Exception("Error al acceder a la base de datos: " . $e->getMessage());
+    }
+}
+
+
+
+
 
 
 function createUser($nre, $contrasena, $nombre, $apellidos, $admin)

@@ -17,6 +17,7 @@ require_once '../comprobador.php';
 
     <?php } ?>
     <a href="../cerrarSession.php">Cerrar Sesion</a>
+    <!-- Sale el nombre de la persona que se a logeado -->
     <h1><strong>Bienvenido: </strong> <?php echo $_SESSION['userCheked']['nombre']; ?></h1>
     
 </body>

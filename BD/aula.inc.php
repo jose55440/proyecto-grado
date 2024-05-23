@@ -2,24 +2,23 @@
 
 include 'bd.inc.php';
 
-
 function checkAula($idAula)
 {
-    $sql = conectar()->prepare("select count(*) from aula where idAula=:idAula");
+    $sql = conectar()->prepare("SELECT COUNT(*) as count FROM aula WHERE idAula = :idAula");
     $sql->bindValue(":idAula", $idAula);
     try {
-
         $sql->execute();
-        $probe = $sql->fetch();
-        if ($probe == 1) {
+        $result = $sql->fetch(PDO::FETCH_ASSOC);
+        if ($result['count'] > 0) {
             return true;
         } else {
             return false;
         }
     } catch (PDOException $e) {
-        throw new Exception("Error al acceder a la base de datos");
+        throw new Exception("Error al acceder a la base de datos: " . $e->getMessage());
     }
 }
+
 
 
 
@@ -31,6 +30,9 @@ function createAula($idAula, $idPabellon, $nombre, $capacidad)
     $sql->bindValue(":nombre", $nombre);
     $sql->bindValue(":capacidad", $capacidad);
     try {
+         
+
+
         $sql->execute();
         echo 'Generando Aula Nueva';
     } catch (PDOException $e) {
