@@ -12,3 +12,14 @@ function createPabellon($idPabellon, $nombre)
         $e->getMessage();
     }
 }
+
+
+function recogerPabellones (){
+    $sql = conectar()->prepare("SELECT * FROM `pabellon` ");
+    try {
+        $sql->execute();
+        return $sql->fetchAll();
+    }catch(PDOException $e){
+        $e->getMessage();
+    }
+}

@@ -13,11 +13,11 @@
 
     try{
         createAula($idAula,$idPabellon,$nombre,$capacidad);
-        echo 'Generando Aula Nueva';
+     
         
         header("refresh:4;url=../views/createNewAula.php");
     }catch(PDOException $e){
         throw new Exception("Error al generar el aula");
         
-        header("refresh:10;url=../views/createNewAula.php");
+        header("refresh:5;url=../views/createNewAula.php");
     }

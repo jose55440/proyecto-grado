@@ -1,5 +1,7 @@
 <?php 
-require_once '../comprobador.php';
+    require_once '../comprobador.php';
+    include '../BD/pabellon.inc.php';
+    $pabellones= recogerPabellones();
 ?>
 
 <!DOCTYPE html>
