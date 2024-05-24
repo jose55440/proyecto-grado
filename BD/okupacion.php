@@ -23,3 +23,23 @@
         }
     }
 
+
+    function getAulasByLetter($letter) {
+        // Preparar la consulta SQL
+        $sql = conectar()->prepare('SELECT DISTINCT(idAula) FROM `okupacion` WHERE idAula LIKE :letter');
+        
+        // Bind del valor con el comodín %
+        $sql->bindValue(':letter', $letter . '%');
+        
+        try {
+            // Ejecutar la consulta
+            $sql->execute();
+            
+            // Devolver todos los resultados
+            return $sql->fetchAll();
+        } catch (PDOException $e) {
+            // Manejo de errores
+            throw new Exception('Error al acceder a la base de datos: ' . $e->getMessage());
+        }
+    }
+    

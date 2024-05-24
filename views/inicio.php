@@ -1,6 +1,5 @@
 <?php 
 require_once '../comprobador.php';
-include '../BD/okupacion.php'
 ?>
 
 <!DOCTYPE html>
@@ -9,55 +8,25 @@ include '../BD/okupacion.php'
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-   
+    <link rel="stylesheet" href="../stylesheets/inicio.css"> <!-- Enlace al archivo CSS -->
 </head>
 
 <body>
-    <?php if($_SESSION['userCheked']['admin']==true) { ?>
-        <a href='./createNewUser.php'>Crear Usuario</a>
-        <a href="./createNewPabellon.php">Crear Pabellon</a>
-        <a href="./createNewAula.php">Crear Aula</a>
-
-    <?php } ?>
-    <a href="../cerrarSession.php">Cerrar Sesion</a>
-    <!-- Sale el nombre de la persona que se a logeado -->
-    <h1><strong>Bienvenido: </strong> <?php echo $_SESSION['userCheked']['nombre']; ?></h1>
-
-    
-    <select name="aulas" id="aulas">
-        <?php 
-            foreach (getIdAulas() as $key => $aula) {
-                ?>
-                <option value='<?= $aula['idAula']?>' ><?= $aula['idAula'] ?></option>
-
-                <?php
-            }
-        ?>
-    </select>
-    <button id="boton"></button>
-    <table border="1">
-        <thead>
-            <th></th>
-            <th>Lunes</th>
-            <th>Martes</th>
-            <th>Miercoles</th>
-            <th>Jueves</th>
-            <th>Viernes</th>
-        </thead>
-        <?php 
-          foreach (getDatosOkupacionById() as $key => $value) {
-        ?>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <?php  }?>
-    </table>
-    
+    <div class="container">
+        <?php if($_SESSION['userCheked']['admin'] == true) { ?>
+            <div class="navbar">
+                <a href="./createNewUser.php">Crear Usuario</a>
+                <a href="./createNewPabellon.php">Crear Pabellon</a>
+                <a href="./createNewAula.php">Crear Aula</a>
+            </div>
+        <?php } ?>
+        <div class="navbar">
+            <a href="../cerrarSession.php">Cerrar Sesion</a>
+            <a href="./ocupaciones.php">Ocupaciones</a>
+        </div>
+        <!-- Sale el nombre de la persona que se a logeado -->
+        <h1><strong>Bienvenido: </strong> <?= htmlspecialchars($_SESSION['userCheked']['nombre']); ?></h1>
+    </div>
 </body>
 
 </html>
