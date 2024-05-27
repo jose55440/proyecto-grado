@@ -39,3 +39,16 @@ function createAula($idAula, $idPabellon, $nombre, $capacidad)
         echo 'Error al introducir el aula';
     }
 }
+
+
+
+function searchAulaById($idAula){
+    $sql = conectar()->prepare("SELECT * FROM `okupacion` WHERE idAula=:idAula");
+    $sql->bindValue("idAula",$idAula);
+    try{
+        $sql->execute();
+        return $sql->fetchAll();
+    }catch(PDOException $e){
+        throw new Exception('Error al aceder a las aulas ');
+    }
+}

@@ -21,9 +21,7 @@ function checkLogin($nre, $contrasena)
     // Obtener el usuario
     $user = $sql->fetch();
 
-    // Depuración: imprimir el usuario (usar solo durante el desarrollo)
-    var_dump($user);
-    print_r($user);
+ 
 
     // Verificar si el usuario existe y la contraseña es correcta
     if (password_verify($contrasena, $user['passworld'])) {

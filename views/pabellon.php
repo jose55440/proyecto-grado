@@ -10,21 +10,26 @@ $pabellones = getAulasByLetter($idPabellon);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles del Pabellón</title>
+    <link rel="stylesheet" href="../stylesheets/detalles_pabellon.css"> <!-- Enlace al archivo CSS -->
 </head>
 
 <body>
-    <?php foreach ($pabellones as $key => $aula) {
-        ?>
-       <h4><?= $aula['idAula']?> </h4>
-    <?php } ?>
-    <p>Detalles del pabellón...</p>
-    <!-- Aquí puedes incluir más información sobre el pabellón -->
+    <div class="container">
+        <h1>Detalles del Pabellón <?= $idPabellon?></h1>
+        <div class="links-container">
+            <?php foreach ($pabellones as $key => $aula) { ?>
+                <div>
+                    <a href="./aula.php?idAula=<?= htmlspecialchars($aula['idAula']) ?>"><?= htmlspecialchars($aula['idAula']) ?></a>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
 </body>
 
 </html>

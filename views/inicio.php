@@ -26,6 +26,8 @@ require_once '../comprobador.php';
         </div>
         <!-- Sale el nombre de la persona que se a logeado -->
         <h1><strong>Bienvenido: </strong> <?= htmlspecialchars($_SESSION['userCheked']['nombre']); ?></h1>
+
+    <h1>Mis reservas</h1>
     </div>
 </body>
 

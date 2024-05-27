@@ -13,6 +13,7 @@ if ($userCheked != null) {
     header("Location: ./views/inicio.php");
     // exit;
 } else {
+    
     echo "Usuario/a y/o contraseña incorrectos";
     // Te redirige otra vez a la pantalla de login pero te deja un tiempo para ver el mensaje 
     header("refresh:4;url=index.php");
