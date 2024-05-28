@@ -18,6 +18,7 @@ require_once '../comprobador.php';
                 <a href="./createNewUser.php">Crear Usuario</a>
                 <a href="./createNewPabellon.php">Crear Pabellon</a>
                 <a href="./createNewAula.php">Crear Aula</a>
+                <a href="./takeReservation.php">Reservar Aula</a>
             </div>
         <?php } ?>
         <div class="navbar">

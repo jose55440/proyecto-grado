@@ -8,6 +8,7 @@ require_once '../comprobador.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Login</title>
+    <link rel="stylesheet" href="../stylesheets/crearNewUser.css"> <!-- Enlace al archivo CSS -->
     <script>
     function validateForm(event) {
         var user = document.getElementById('nre').value;
@@ -22,7 +23,7 @@ require_once '../comprobador.php';
 </head>
 <body>
     <form action="../lib/createNewUser2.php" method="post" onsubmit="validateForm(event)">
-        <label for="user">NRE</la.bel>
+        <label for="user">NRE</label>
         <input type="text" name="nre" id="nre" required>
         <br>
         <label for="contrasena">Contraseña</label>
@@ -34,9 +35,10 @@ require_once '../comprobador.php';
         <label for="apellidos">Apellidos</label>
         <input type="text" name="apellidos" id="apellidos">
         <br>
+        <label for="admin">Admin</label>
         <select name="admin" id="admin">
-            <option value=true>Si</option>
-            <option value=false>No</option>
+            <option value="true">Sí</option>
+            <option value="false">No</option>
         </select>
         <br>
         <input type="submit" value="Crear">
