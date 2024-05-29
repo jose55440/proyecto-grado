@@ -30,7 +30,7 @@ function createAula($idAula, $idPabellon, $nombre, $capacidad)
     $sql->bindValue(":nombre", $nombre);
     $sql->bindValue(":capacidad", $capacidad);
     try {
-         
+
 
 
         $sql->execute();
@@ -42,13 +42,26 @@ function createAula($idAula, $idPabellon, $nombre, $capacidad)
 
 
 
-function searchAulaById($idAula){
+function searchAulaById($idAula)
+{
     $sql = conectar()->prepare("SELECT * FROM `okupacion` WHERE idAula=:idAula");
-    $sql->bindValue("idAula",$idAula);
-    try{
+    $sql->bindValue("idAula", $idAula);
+    try {
         $sql->execute();
         return $sql->fetchAll();
-    }catch(PDOException $e){
-        throw new Exception('Error al aceder a las aulas ');
+    } catch (PDOException $e) {
+        throw new Exception('Error al acceder a las aulas ');
+    }
+}
+
+
+function getAllAulas()
+{
+    $sql = conectar()->prepare("Select * from aula");
+    try {
+        $sql->execute();
+        return $sql->fetchAll();
+    } catch (PDOException $e) {
+        throw new Exception('Error al acceder a la base de datos');
     }
 }
