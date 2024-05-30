@@ -15,12 +15,13 @@ $meses = array(
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservar</title>
+    <link rel="stylesheet" href="../stylesheets/takeReservation.css">
     <script>
         function validateForm(event) {
             var idAula = document.getElementById('idAula').value;
@@ -98,13 +99,11 @@ $meses = array(
         <label for="idGrupo">Grupo</label>
         <select name="idGrupo" id="idGrupo">
             <?php foreach ($grupos as $grupo) { ?>
-                <option value=<?= $grupo['id'] ?>><?= $grupo['alias'] ?></option>
+                <option value=<?= $grupo['id']?>><?= $grupo['alias'] ?></option>
             <?php } ?>
         </select>
         <?php if($_SESSION['userCheked']['admin'] == true) { ?>
         <a href="createNewGroup.php">Crear Nuevo Grupo</a> <?php } ?>
-        
-        
         <br>
         <input type="submit" value="Reservar">
     </form>
@@ -112,3 +111,4 @@ $meses = array(
 </body>
 
 </html>
+

@@ -1,7 +1,7 @@
 /* Estilo general */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
     display: flex;
@@ -15,10 +15,9 @@ form {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    box-sizing: border-box;
 }
 
 /* Títulos y etiquetas */
@@ -31,12 +30,10 @@ label {
     display: block;
     margin-bottom: 8px;
     color: #555;
-    font-weight: bold;
 }
 
 /* Campos de entrada */
 input[type="text"],
-input[type="number"],
 select {
     width: calc(100% - 22px);
     padding: 10px;

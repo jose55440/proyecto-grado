@@ -18,7 +18,11 @@
         <input type="text" name="idAula" id="idAula" required>
         <br>
         <label for="idPabellon">Id del Pabellon</label>
-        <input type="text" name="idPabellon" id="idPabellon" required>
+        <select name="idPabellon" id="idPabellon">
+            <?php foreach ($pabellones as $key => $pabellon) { ?> 
+                <option value="<?= $pabellon['idPabellon'] ?>"><?= $pabellon['nombre'] ?></option>
+            <?php } ?>
+        </select>
         <br>
         <label for="nombre">Nombre del aula</label>
         <input type="text" name="nombre" id="nombre" required>

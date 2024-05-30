@@ -14,10 +14,11 @@ $idUsuario=$_SESSION['userCheked']['nre'];
 
 if (checkReservation($idAula, $idHora, $idMes, $idDia)) {
     echo "Ese aula ya esta reservada";
+    header("refresh:3;url=../views/takeReservation.php");
 } else {
     try {
         createReservation($idAula, $idHora, $idMes, $idDia, $idGrupo, $idUsuario);
-        echo "Reserva realizada con éxito.";
+        header("Location: ../views/inicio.php");
     } catch (PDOException $e) {
         die("Error al realizar la reserva: " . $e->getMessage());
     }
