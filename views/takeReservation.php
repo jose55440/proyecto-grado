@@ -1,22 +1,16 @@
 <?php
 require_once '../comprobador.php';
-include '../BD/aula.inc.php';
-include '../BD/grupo.inc.php';
+include_once '../BD/aula.inc.php';
+include_once '../BD/grupo.inc.php';
+
+
 $idAulas = getAllAulas();
-$grupos= getGrupos();
+$grupos = getGrupos();
+
+
 $meses = array(
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre"
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+    "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
 );
 ?>
 
@@ -69,38 +63,32 @@ $meses = array(
 </head>
 
 <body>
-    <form action="../lib/takeReservation2.php" method="get" onsubmit="validateForm(event)">
+    <form action="../lib/takeReservation2.php" method="GET" onsubmit="validateForm(event)">
         <label for="idAula">Seleccion de aula</label>
         <select name="idAula" id="idAula">
-            <?php
-            foreach ($idAulas as $key => $aula) {
-            ?>
-                <option value="<?= $aula['idAula'] ?>"><?= $aula['idPabellon'] . ' ' . $aula['idAula'] ?></option>
+            <?php foreach ($idAulas as $aula) { ?>
+                <option value="<?= $aula['idAula'] ?>"><?= $aula['idPabellon'] . '' . $aula['idAula'] ?></option>
             <?php } ?>
         </select>
-        <a href="./createNewAula.php">Crear nueva aula</a>
+        <?php if($_SESSION['userCheked']['admin'] == true) { ?>
+        <a href="./createNewAula.php">Crear nueva aula</a> <?php } ?>
         <br>
         <label for="idHora">Hora</label>
         <select name="idHora" id="idHora">
-            <option value='1'>8:15-9:10</option>
-            <option value='2'>9:10-10:05</option>
-            <option value='3'>10:05-11:00</option>
-            <option value='4'>11:30-12:25</option>
-            <option value='5'>12:25-13:20</option>
-            <option value='6'>13:20-14:15</option>
+            <option value=1>8:15-9:10</option>
+            <option value=2>9:10-10:05</option>
+            <option value=3>10:05-11:00</option>
+            <option value=4>11:30-12:25</option>
+            <option value=5>12:25-13:20</option>
+            <option value=6>13:20-14:15</option>
         </select>
         <br>
         <label for="idMes">Mes</label>
         <select name="idMes" id="idMes" onchange="updateDays()">
-            <?php
-            foreach ($meses as $num => $nombre) {
-            ?>
-                <option value="<?= $num + 1 ?>"><?= $nombre ?></option>
-            <?php
-            }
-            ?>
+            <?php foreach ($meses as $num => $nombre) { ?>
+                <option value=<?= $num + 1 ?>><?= $nombre ?></option>
+            <?php } ?>
         </select>
-        
         <br>
         <label for="idDia">Dia</label>
         <select name="idDia" id="idDia">
@@ -109,22 +97,18 @@ $meses = array(
         <br>
         <label for="idGrupo">Grupo</label>
         <select name="idGrupo" id="idGrupo">
-        <?php
-            foreach ($grupos as $key => $grupo) {
-            ?>
-            
-            <option value=<?= $grupo['id'] ?>><?= $grupo['alias'] ?></option>
-            <?php
-        } 
-        ?>
+            <?php foreach ($grupos as $grupo) { ?>
+                <option value=<?= $grupo['id'] ?>><?= $grupo['alias'] ?></option>
+            <?php } ?>
         </select>
+        <?php if($_SESSION['userCheked']['admin'] == true) { ?>
+        <a href="createNewGroup.php">Crear Nuevo Grupo</a> <?php } ?>
         
+        
+        <br>
         <input type="submit" value="Reservar">
     </form>
-
-
-    <script>updateDays() </script>
-    
+    <script>updateDays();</script>
 </body>
 
 </html>

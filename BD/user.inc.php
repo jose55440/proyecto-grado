@@ -1,5 +1,5 @@
 <?php
-include 'bd.inc.php';
+include_once 'bd.inc.php';
 
 function checkLogin($nre, $contrasena)
 {   
@@ -71,3 +71,16 @@ function createUser($nre, $contrasena, $nombre, $apellidos, $admin)
         $e->getMessage();
     }
 }
+
+
+
+function getAllUser(){
+    $sql = conectar()->prepare('select nre from usuario');
+    try{
+        $sql->execute();
+        return $sql->fetchAll();
+    }catch(PDOException $e){
+        throw new Exception('Error al acceder a la base de datos');
+    }
+}
+
