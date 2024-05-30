@@ -1,4 +1,5 @@
 <?php   
+require_once '../comprobador.php';
 include_once 'bd.inc.php';
 
 function createNewGroup($alias,$nombreCompleto){

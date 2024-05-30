@@ -1,6 +1,7 @@
 <?php
+require_once '../comprobador.php';
 include_once 'bd.inc.php';
-
+include_once './okupacion.php';
 
 
 
