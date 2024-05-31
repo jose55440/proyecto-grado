@@ -95,11 +95,9 @@ function checkOkupationToOcupation($idAula, $hora, $dia, $mes)
 
     try {
         $sql->execute();
-        $comprobante = $sql->fetchColumn();    
+        $comprobante = $sql->fetchColumn();
         return $comprobante == 1;
     } catch (PDOException $e) {
         throw new Exception('Error al acceder a la tabla okupacion');
     }
 }
-
-
