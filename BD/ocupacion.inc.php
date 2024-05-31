@@ -51,7 +51,7 @@ function createReservation($idAula, $idHora, $idMes, $idDia, $idGrupo, $idUsuari
 {
 
 
-    $sql = conectar()->prepare("INSERT INTO ocupacion VALUES (:idAula, :idHora, :idMes, :idDia, :idGrupo, :idUsuario)");
+    $sql = conectar()->prepare("INSERT INTO ocupacion VALUES (:idAula, :idHora,:idDia , :idMes, :idGrupo, :idUsuario)");
     $sql->bindValue(":idAula", $idAula);
     $sql->bindValue(':idHora', $idHora);
     $sql->bindValue(':idMes', $idMes);

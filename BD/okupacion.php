@@ -56,20 +56,22 @@ function checkOkupationToOcupation($idAula, $hora, $dia, $mes)
     // Crear un objeto DateTime para obtener el nombre del día
     $date = new DateTime("$year-$mes-$dia");
 
-    // Crear el formateador para el nombre del día
-    $dayFormatter = new IntlDateFormatter(
-        'es_ES',
-        IntlDateFormatter::FULL,
-        IntlDateFormatter::NONE,
-        'UTC',
-        IntlDateFormatter::TRADITIONAL,
-        'EEEE'
-    );
-    // Obtener el nombre del día
-    $dayName = $dayFormatter->format($date);
+    // Obtener el nombre del día en inglés
+    $dayNameEnglish = $date->format('l');
+
+    // Mapeo de nombres de días en inglés a español
+    $daysMap = [
+        'Monday' => 'lunes',
+        'Tuesday' => 'martes',
+        'Wednesday' => 'miércoles',
+        'Thursday' => 'jueves',
+        'Friday' => 'viernes',
+        'Saturday' => 'sábado',
+        'Sunday' => 'domingo'
+    ];
 
     // Mapeo de nombres de días a columnas en la base de datos
-    $daysMap = [
+    $daysColumnMap = [
         'lunes' => 'lunes',
         'martes' => 'martes',
         'miércoles' => 'miercoles', // Asegúrate de que este mapeo coincida con los nombres de las columnas en tu base de datos
@@ -77,16 +79,19 @@ function checkOkupationToOcupation($idAula, $hora, $dia, $mes)
         'viernes' => 'viernes',
     ];
 
-    // Obtener el nombre del día en minúsculas
-    $dayColumn = strtolower($dayName);
-
-    // Validar si el nombre del día está en el mapeo
-    if (!array_key_exists($dayColumn, $daysMap)) {
+    // Obtener el nombre del día en español
+    if (!array_key_exists($dayNameEnglish, $daysMap)) {
         throw new Exception('Nombre del día no válido');
     }
 
+    $dayNameSpanish = $daysMap[$dayNameEnglish];
+
     // Obtener la columna correspondiente en la base de datos
-    $dayColumn = $daysMap[$dayColumn];
+    if (!array_key_exists($dayNameSpanish, $daysColumnMap)) {
+        throw new Exception('Nombre del día no válido para columna');
+    }
+
+    $dayColumn = $daysColumnMap[$dayNameSpanish];
 
     // Construir la consulta SQL dinámicamente de forma segura
     $sql = conectar()->prepare("SELECT $dayColumn FROM okupacion WHERE idAula = :idAula AND hora = :hora");
@@ -101,3 +106,4 @@ function checkOkupationToOcupation($idAula, $hora, $dia, $mes)
         throw new Exception('Error al acceder a la tabla okupacion');
     }
 }
+

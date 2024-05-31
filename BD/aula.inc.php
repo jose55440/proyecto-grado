@@ -55,6 +55,21 @@ function searchAulaById($idAula)
 }
 
 
+function searchAulaByIdToOkupation($idAula)
+{
+    $pdo = conectar();
+    $sql = $pdo->prepare("SELECT * FROM `aula` WHERE idAula = :idAula");
+    $sql->bindValue(":idAula", $idAula);
+
+    try {
+        $sql->execute();
+        return $sql->fetch(PDO::FETCH_ASSOC); // Devuelve solo una fila como un array asociativo
+    } catch (PDOException $e) {
+        throw new Exception('Error al acceder a las aulas: ' . $e->getMessage());
+    }
+}
+
+
 function getAllAulas()
 {
     $sql = conectar()->prepare("Select * from aula");

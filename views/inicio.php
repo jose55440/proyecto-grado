@@ -2,6 +2,7 @@
 require_once '../comprobador.php';
 include_once '../BD/ocupacion.inc.php';
 include_once '../BD/grupo.inc.php';
+include_once '../BD/aula.inc.php';
 $meses = array(
     "Enero",
     "Febrero",
@@ -57,9 +58,11 @@ $hora = array(
 
         <h1>Mis reservas</h1>
 
-        <?php foreach (getAllReservations() as $key => $reserva) { ?>
+        <?php foreach (getAllReservations() as $key => $reserva) {
+            $pabellon=searchAulaByIdToOkupation($reserva['idAula']); ?>
     <div class="reserva">
-        <p>Aula: <?= $reserva['idAula'] ?></p>
+        
+        <p>Aula: <?= $pabellon['idPabellon'].$reserva['idAula'] ?></p>
         <p>Hora: <?= $hora[$reserva['idHora']-1] ?></p>
         <p>Dia: <?= $reserva['idDia'] ?></p>
         <p>Mes: <?= $meses[$reserva['idMes']-1] ?></p>
