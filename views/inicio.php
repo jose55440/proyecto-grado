@@ -45,6 +45,7 @@ $hora = array(
                 <a href="./createNewPabellon.php">Crear Pabellon</a>
                 <a href="./createNewAula.php">Crear Aula</a>
                 <a href="./createNewGrup.php">Crear Grupo</a>
+                <a href="./createNewEquipamiento.php">Crear Equipamiento</a>
 
             </div>
         <?php } ?>
