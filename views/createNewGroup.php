@@ -1,5 +1,5 @@
 <?php
-require_once '../comprobador.php';
+require_once '../checkAdmin.php';
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <?php
-require_once '../comprobador.php';
+require_once '../checkAdmin.php';
 include '../BD/aula.inc.php';
 $idAula = $_GET['idAula'];
 $ocupacionAula = searchAulaById($idAula);

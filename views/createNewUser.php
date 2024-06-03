@@ -1,5 +1,6 @@
 <?php 
-require_once '../comprobador.php';
+require_once '../checkAdmin.php';
+include_once '../BD/user.inc.php';
 ?>
 
 <!DOCTYPE html>

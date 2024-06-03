@@ -80,3 +80,17 @@ function getAllAulas()
         throw new Exception('Error al acceder a la base de datos');
     }
 }
+
+
+
+
+function deleteAulaById($idAula){
+    $sql = conectar()->prepare('DELETE FROM `aula` WHERE idAula=:idAula');
+    $sql->bindValue(':idAula',$idAula);
+    try {
+        $sql->execute();
+        
+    } catch (PDOException $e) {
+        throw new Exception('Error al acceder a la base de datos');
+    }
+}

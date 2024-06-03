@@ -76,7 +76,7 @@ function createUser($nre, $contrasena, $nombre, $apellidos, $admin)
 
 
 function getAllUser(){
-    $sql = conectar()->prepare('select nre from usuario');
+    $sql = conectar()->prepare('select nre,nombre,apellidos from usuario');
     try{
         $sql->execute();
         return $sql->fetchAll();
@@ -85,3 +85,30 @@ function getAllUser(){
     }
 }
 
+
+
+
+function deleteUserById($nre){
+    $sql= conectar()->prepare('DELETE FROM `usuario` WHERE nre=:nre');
+    $sql->bindValue(':nre',$nre);
+    try{
+        $sql->execute();
+    }catch(PDOException $e){
+        throw new Exception('Error al acceder a la base de datos');
+    }
+}
+
+
+
+function checkAdmin($nre){
+    $sql=conectar()->prepare('select admin from usuario where nre=:nre');
+    $sql->bindValue(':nre',$nre);
+
+    try{
+        $sql->execute();
+        $admin=$sql->fetchColumn();
+        return $admin==1;
+    }catch(PDOException $e){
+        throw new Exception('Error al acceder a la base de datos');
+    }
+}

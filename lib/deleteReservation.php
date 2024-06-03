@@ -1,5 +1,5 @@
 <?php
-// deleteReservation.php
+
 
 require_once '../comprobador.php';
 include '../BD/ocupacion.inc.php';
