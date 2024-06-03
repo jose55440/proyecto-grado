@@ -72,21 +72,22 @@ function getAllReservations()
 {
 
 
-    $sql = conectar()->prepare('select * from ocupacion where idProfesor=:idProfesor');
-    $sql->bindValue(":idProfesor",$_SESSION['userCheked']['nre']);
+    $sql = conectar()->prepare('SELECT * FROM ocupacion WHERE idProfesor = :idProfesor ORDER BY idHora, idDia, idMes');
+    $sql->bindValue(":idProfesor", $_SESSION['userCheked']['nre']);
 
 
 
     try {
         $sql->execute();
-       return  $sql->fetchAll();
+        return  $sql->fetchAll();
     } catch (PDOException $e) {
         throw new Exception('Error al acceder a la base de datos');
     }
 }
 
 
-function deleteReservationById($idAula, $idHora, $idMes, $idDia) {
+function deleteReservationById($idAula, $idHora, $idMes, $idDia)
+{
     $sql = conectar()->prepare('DELETE FROM ocupacion WHERE idAula = :idAula AND idHora = :idHora AND idMes = :idMes AND idDia = :idDia');
     $sql->bindValue(":idAula", $idAula);
     $sql->bindValue(":idHora", $idHora);
