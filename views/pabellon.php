@@ -23,6 +23,7 @@ $pabellones = getAulasByLetter($idPabellon);
     <div class="container">
         <h1>Detalles del Pabellón <?= $idPabellon?></h1>
         <div class="links-container">
+            <!-- Recogiendo el id del pabellon muestro sus respectivas aulas -->
             <?php foreach ($pabellones as $key => $aula) { ?>
                 <div>
                     <a href="./aula.php?idAula=<?= htmlspecialchars($aula['idAula']) ?>"><?= htmlspecialchars($aula['idAula']) ?></a>

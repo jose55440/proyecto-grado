@@ -62,7 +62,7 @@ $meses = array(
         }
     </script>
 </head>
-
+<!-- Formulario con su js incluido en el mismo documento -->
 <body>
     <form action="../lib/takeReservation2.php" method="GET" onsubmit="validateForm(event)">
         <label for="idAula">Seleccion de aula</label>

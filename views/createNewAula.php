@@ -37,6 +37,7 @@ $pabellones = getPabellones();
         <br>
         <input type="submit" value="Añadir">
     </form>
+    <!-- Muestra todas las aulas existentes  -->
     <?php if ($_SESSION['userCheked']['admin'] == true) { ?>
         <div class="cards-container">
             <?php foreach (getAllAulas() as $key => $aula) { ?>

@@ -37,7 +37,7 @@ h1 {
 }
 
 .links-container div {
-    flex: 0 0 48%; /* Ancho de aproximadamente la mitad del contenedor, con margen */
+    flex: 0 0 48%; 
     margin-bottom: 10px;
 }
 

@@ -3,6 +3,7 @@ require_once '../cheker.php';
 include_once 'bd.inc.php';
 $diasSemana = array(1 => 'lunes', 2 => 'martes', 3 => 'miercoles', 4 => 'jueves', 5 => 'viernes');
 
+
 function getDatosOkupacionById($idAula)
 {
     $sql = conectar()->prepare('select * from okupacion where idAula=:idAula');
@@ -26,7 +27,7 @@ function getIdAulas()
     }
 }
 
-
+// Recoge todas las aulas sin repeticiones
 function getAulasByLetter($letter)
 {
     // Preparar la consulta SQL
@@ -48,7 +49,7 @@ function getAulasByLetter($letter)
 }
 
 
-
+// Comprueba la ocupacion de todos los meses
 function checkOkupationToOcupation($idAula, $hora, $dia, $mes)
 {
     $year = date('Y'); // Año actual
@@ -90,10 +91,10 @@ function checkOkupationToOcupation($idAula, $hora, $dia, $mes)
     if (!array_key_exists($dayNameSpanish, $daysColumnMap)) {
         throw new Exception('Nombre del día no válido para columna');
     }
-
+    // Con esto consigo el dia de la semana para comprobarlo en okupacion
     $dayColumn = $daysColumnMap[$dayNameSpanish];
 
-    // Construir la consulta SQL dinámicamente de forma segura
+    
     $sql = conectar()->prepare("SELECT $dayColumn FROM okupacion WHERE idAula = :idAula AND hora = :hora");
     $sql->bindValue(':idAula', $idAula);
     $sql->bindValue(':hora', $hora);

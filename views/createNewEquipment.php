@@ -22,6 +22,7 @@
         <br>
         <label for="idAula">Aula</label>
         <select name="idAula" id="idAula">
+            <!-- Muestro las aulas  -->
         <?php foreach (getAllAulas() as $key => $aula) { ?>
             <option value="<?=$aula['idAula']?>"><?= $aula['idPabellon'].$aula['idAula'] ?></option>
         <?php } ?>

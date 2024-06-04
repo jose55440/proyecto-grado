@@ -4,7 +4,7 @@ include_once 'bd.inc.php';
 include_once 'okupacion.php';
 
 
-
+// Comprueba si la reserva esta ya creada
 function checkReservation($idAula, $idHora, $idMes, $idDia)
 {
     // Conectar a la base de datos
@@ -46,7 +46,7 @@ function checkReservation($idAula, $idHora, $idMes, $idDia)
     }
 }
 
-
+// Agrega la reserva 
 function createReservation($idAula, $idHora, $idMes, $idDia, $idGrupo, $idUsuario)
 {
 
@@ -67,7 +67,7 @@ function createReservation($idAula, $idHora, $idMes, $idDia, $idGrupo, $idUsuari
 }
 
 
-
+// Recoger todas las reservas por el idProfesor que se recoge con el session start
 function getAllReservations()
 {
 
@@ -85,7 +85,7 @@ function getAllReservations()
     }
 }
 
-
+// Borrar reservas
 function deleteReservationById($idAula, $idHora, $idMes, $idDia)
 {
     $sql = conectar()->prepare('DELETE FROM ocupacion WHERE idAula = :idAula AND idHora = :idHora AND idMes = :idMes AND idDia = :idDia');

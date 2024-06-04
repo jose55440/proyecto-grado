@@ -39,6 +39,7 @@ $hora = array(
 
 <body>
     <div class="container">
+        <!-- Si el usuario es admin puede crear y borrar -->
         <?php if ($_SESSION['userCheked']['admin'] == true) { ?>
             <div class="navbar">
                 <a href="./createNewUser.php">Crear Usuario</a>
@@ -58,6 +59,7 @@ $hora = array(
         <h1><strong>Bienvenido: </strong> <?= htmlspecialchars($_SESSION['userCheked']['nombre']); ?></h1>
 
         <h1>Mis reservas</h1>
+        <!-- Muestra las reservas del usuario -->
 
         <?php foreach (getAllReservations() as $key => $reserva) {
             $pabellon=searchAulaByIdToOkupation($reserva['idAula']); ?>

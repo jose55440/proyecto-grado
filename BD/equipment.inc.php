@@ -3,8 +3,7 @@ require_once '../cheker.php';
 include_once 'bd.inc.php';
 
 
-
-
+// Agrega un equipamiento nuevo para un aula
 function createEquipment($nombre,$numSerie,$idAula){
     $sql = conectar()->prepare('INSERT INTO `equipamiento`(`nombre`, `numSerie`, `idAula`) VALUES (:nombre,:numSerie,:idAula)');
     $sql->bindValue(':nombre',$nombre);

@@ -69,7 +69,7 @@ function searchAulaByIdToOkupation($idAula)
     }
 }
 
-
+// Recoge todas las aulas
 function getAllAulas()
 {
     $sql = conectar()->prepare("Select * from aula");
@@ -83,7 +83,7 @@ function getAllAulas()
 
 
 
-
+// Borra un aula por id
 function deleteAulaById($idAula){
     $sql = conectar()->prepare('DELETE FROM `aula` WHERE idAula=:idAula');
     $sql->bindValue(':idAula',$idAula);

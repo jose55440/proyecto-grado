@@ -2,6 +2,7 @@
 require_once '../cheker.php';
 include_once 'bd.inc.php';
 
+// Comprobar pabellon para saber si ya esta creado
 function checkPabellon($idPabellon)
 {
     $sql = conectar()->prepare("SELECT COUNT(*) as count FROM pabellon WHERE idPabellon = :idPabellon");
@@ -19,7 +20,7 @@ function checkPabellon($idPabellon)
     }
 }
 
-
+// Crea pabellon
 function createPabellon($idPabellon, $nombre)
 {
     $sql = conectar()->prepare("INSERT INTO `pabellon`(`idPabellon`, `nombre`) VALUES (:idPabellon,:nombre)");
@@ -32,7 +33,7 @@ function createPabellon($idPabellon, $nombre)
     }
 }
 
-
+// Recoge todos los pabellones
 function getPabellones (){
     $sql = conectar()->prepare("SELECT * FROM `pabellon` ");
     try {

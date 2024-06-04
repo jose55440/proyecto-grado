@@ -2,6 +2,7 @@
 
 include_once 'bd.inc.php';
 
+// Comprueba el usuario y contraseña
 function checkLogin($nre, $contrasena)
 {   
     // Conectar a la base de datos
@@ -24,7 +25,7 @@ function checkLogin($nre, $contrasena)
 
  
 
-    // Verificar si el usuario existe y la contraseña es correcta
+    // Verificar si el usuario existe y la contraseña(la contraseña esta cifrada) es correcta
     if (password_verify($contrasena, $user['passworld'])) {
         return $user;
     } else {
@@ -34,7 +35,7 @@ function checkLogin($nre, $contrasena)
 
 
 
-
+// Compruba el ususario para que no se puedan crear mas con el mismo nre
 function checkUser($nre)
 {
     $sql = conectar()->prepare("SELECT COUNT(*) as count FROM usuario WHERE nre = :nre");
@@ -56,7 +57,7 @@ function checkUser($nre)
 
 
 
-
+// Crea usuario
 function createUser($nre, $contrasena, $nombre, $apellidos, $admin)
 {
     $contrasena=password_hash($contrasena, PASSWORD_DEFAULT);
@@ -74,7 +75,7 @@ function createUser($nre, $contrasena, $nombre, $apellidos, $admin)
 }
 
 
-
+// Recoge todos los usuarios
 function getAllUser(){
     $sql = conectar()->prepare('select nre,nombre,apellidos from usuario');
     try{
@@ -87,7 +88,7 @@ function getAllUser(){
 
 
 
-
+// Borra el usuario por id
 function deleteUserById($nre){
     $sql= conectar()->prepare('DELETE FROM `usuario` WHERE nre=:nre');
     $sql->bindValue(':nre',$nre);
@@ -99,7 +100,7 @@ function deleteUserById($nre){
 }
 
 
-
+// Comprueba si es admin
 function checkAdmin($nre){
     $sql=conectar()->prepare('select admin from usuario where nre=:nre');
     $sql->bindValue(':nre',$nre);

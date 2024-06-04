@@ -4,7 +4,7 @@ include '../BD/aula.inc.php';
 $idAula = $_GET['idAula'];
 $ocupacionAula = searchAulaById($idAula);
 ?>
-
+<!-- En este documento muestro la ocupacion de las aulas con ayuda de la tabla okupacion -->
 <!DOCTYPE html>
 <html lang="es">
 <head>

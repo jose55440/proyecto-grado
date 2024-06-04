@@ -2,6 +2,8 @@
 require_once '../cheker.php';
 include_once 'bd.inc.php';
 
+
+// Crea un nuevo grupo
 function createNewGroup($alias,$nombreCompleto){
     $sql= conectar()->prepare('INSERT INTO `grupo` (`alias`, `nombreCompleto`)  VALUES (:alias,:nombreCompleto)');
     $sql->bindValue(":alias",$alias);
@@ -15,7 +17,7 @@ function createNewGroup($alias,$nombreCompleto){
     }
 }
 
-
+// Recoge todos los grupos
 function getGrupos(){
     $sql =conectar()->prepare("select * from grupo");
     try{
@@ -26,6 +28,7 @@ function getGrupos(){
     }
 }
 
+// Consigue el alias por el id del grupo
 function getAliasGrupById($idGrupo){
     $sql =conectar()->prepare("select alias from grupo where id=:id");
     $sql->bindValue(':id',$idGrupo);
