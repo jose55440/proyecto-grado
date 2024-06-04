@@ -1,5 +1,5 @@
 <?php
-require_once '../comprobador.php';
+require_once '../cheker.php';
 include_once 'bd.inc.php';
 
 function checkPabellon($idPabellon)
@@ -33,7 +33,7 @@ function createPabellon($idPabellon, $nombre)
 }
 
 
-function recogerPabellones (){
+function getPabellones (){
     $sql = conectar()->prepare("SELECT * FROM `pabellon` ");
     try {
         $sql->execute();

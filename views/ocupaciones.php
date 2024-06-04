@@ -1,5 +1,5 @@
 <?php
-require_once '../comprobador.php';
+require_once '../cheker.php';
 include '../BD/pabellon.inc.php';
 ?>
 
@@ -15,7 +15,7 @@ include '../BD/pabellon.inc.php';
 
 <body>
     <div class="container">
-        <?php foreach (recogerPabellones() as $key => $pabellon) { ?>
+        <?php foreach (getPabellones() as $key => $pabellon) { ?>
             <div>
                 <a href="pabellon.php?idPabellon=<?= $pabellon['idPabellon'] ?>"><?= htmlspecialchars($pabellon['nombre']) ?></a>
             </div>

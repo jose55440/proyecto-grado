@@ -1,7 +1,7 @@
 <?php
 
 
-require_once '../comprobador.php';
+require_once '../cheker.php';
 include '../BD/ocupacion.inc.php';
 if (isset($_GET['idAula']) && isset($_GET['idHora']) && isset($_GET['idMes']) && isset($_GET['idDia'])) {
     $idAula = $_GET['idAula'];

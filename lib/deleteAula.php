@@ -1,7 +1,7 @@
 <?php
 
 
-require_once '../comprobador.php';
+require_once '../cheker.php';
 include_once '../BD/aula.inc.php';
 
 if (isset($_GET['idAula'])) {

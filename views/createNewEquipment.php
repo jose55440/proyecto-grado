@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../stylesheets/createNewEquipment.css"> 
 </head>
 <body>
-    <form action="../lib/createNewEquipamiento2.php" method="get">
+    <form action="../lib/createNewEquipment2.php" method="get">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre">
         <br>

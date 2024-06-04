@@ -3,7 +3,7 @@
 require_once '../checkAdmin.php';
 include '../BD/pabellon.inc.php';
 include '../BD/aula.inc.php';
-$pabellones = recogerPabellones();
+$pabellones = getPabellones();
 ?>
 
 <!DOCTYPE html>

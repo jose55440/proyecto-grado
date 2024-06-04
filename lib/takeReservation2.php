@@ -1,5 +1,5 @@
 <?php
-require_once '../comprobador.php';
+require_once '../cheker.php';
 include_once '../BD/ocupacion.inc.php';
 include_once '../BD/okupacion.php';
 include_once '../BD/aula.inc.php';

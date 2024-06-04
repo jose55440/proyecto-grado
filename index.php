@@ -18,7 +18,7 @@
     </script>
 </head>
 <body>
-    <form action="comprueba.php" method="post" onsubmit="validateForm(event)">
+    <form action="checkLogin.php" method="post" onsubmit="validateForm(event)">
         <label for="login">Login</label>
         <input type="text" name="login" id="login" required>
         <br>

@@ -1,5 +1,5 @@
 <?php
-require_once '../comprobador.php';
+require_once '../cheker.php';
 include_once 'bd.inc.php';
 $diasSemana = array(1 => 'lunes', 2 => 'martes', 3 => 'miercoles', 4 => 'jueves', 5 => 'viernes');
 

@@ -1,5 +1,5 @@
 <?php
-require_once '../comprobador.php';
+require_once '../cheker.php';
 include_once '../BD/ocupacion.inc.php';
 include_once '../BD/grupo.inc.php';
 include_once '../BD/aula.inc.php';
@@ -45,13 +45,13 @@ $hora = array(
                 <a href="./createNewPabellon.php">Crear Pabellon</a>
                 <a href="./createNewAula.php">Crear Aula</a>
                 <a href="./createNewGroup.php">Crear Grupo</a>
-                <a href="./createNewEquipamiento.php">Crear Equipamiento</a>
+                <a href="./createNewEquipment.php">Crear Equipamiento</a>
 
             </div>
         <?php } ?>
         <div class="navbar">
             <a href="./takeReservation.php">Reservar Aula</a>
-            <a href="../cerrarSession.php">Cerrar Sesion</a>
+            <a href="../closeSession.php">Cerrar Sesion</a>
             <a href="./ocupaciones.php">Ocupaciones</a>
         </div>
         <!-- Sale el nombre de la persona que se a logeado -->

@@ -1,5 +1,5 @@
 <?php
-require_once '../comprobador.php';
+require_once '../cheker.php';
 include_once '../BD/pabellon.inc.php';
 
 $idPabellon = $_GET['idPabellon'];

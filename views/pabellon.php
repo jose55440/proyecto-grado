@@ -1,5 +1,5 @@
 <?php
-require_once '../comprobador.php';
+require_once '../cheker.php';
 include '../BD/okupacion.php';
 
 // Obtener el idPabellon de la URL
