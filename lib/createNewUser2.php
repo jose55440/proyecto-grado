@@ -11,7 +11,7 @@ require_once '../cheker.php';
     try{
 
             // Comprueba si el usuario existe 
-    if (!checkAula($nre)) {
+    if (!checkUser($nre)) {
         // Crear nuevo usuario
         createUser($nre, $contrasena, $nombre, $apellidos, $admin);
         echo '<h1>Guardando datos</h1>';

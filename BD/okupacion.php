@@ -108,3 +108,4 @@ function checkOkupationToOcupation($idAula, $hora, $dia, $mes)
     }
 }
 
+// Poner un cuadrado verde o rojo segun si esta ocupada esa aula a esa hora ese dia y ese mes con ayuda del metodo checkOkupationToOcupation de okupacion.php y del metodo de checkReservation de ocupacion.inc.php

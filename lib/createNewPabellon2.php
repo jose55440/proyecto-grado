@@ -9,7 +9,7 @@ $nombre = $_GET['nombre'];
 try {
 
     // Comprueba si el pabellon existe 
-    if (!checkAula($idAula)) {
+    if (!checkPabellon($idPabellon)) {
         // Crea aula
         createPabellon($idPabellon, $nombre);
         echo 'Generando Pabellon Nuevo';

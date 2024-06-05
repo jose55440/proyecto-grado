@@ -108,6 +108,8 @@ $meses = array(
         <input type="submit" value="Reservar">
     </form>
     <script>updateDays();</script>
+
+    
 </body>
 
 </html>
