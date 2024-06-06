@@ -12,8 +12,9 @@ require_once '../checkAdmin.php';
     <script>
       const validateForm= (event)=> {
         var idPabellon = document.getElementById('idPabellon').value;
+        var nombre= document.getElementById('nombre').value;
         
-        if (!idPabellon) {
+        if (!idPabellon || !nombre) {
             alert('Por favor, completa los cambios necesarios');
             event.preventDefault(); // Previene el envío del formulario
         }
@@ -21,12 +22,13 @@ require_once '../checkAdmin.php';
     </script>
 </head>
 <body>
+<a href="./inicio.php" >Inicio</a>
     <form action="../lib/createNewPabellon2.php" method="get" onsubmit="validateForm(event)">
         <label for="idPabellon">Id</label>
-        <input type="text" name="idPabellon" id="idPabellon" required>
+        <input type="text" name="idPabellon" id="idPabellon" required placeholder="EJ('A')">
         <br>
         <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre">
+        <input type="text" name="nombre" id="nombre" required>
         <br>
         <input type="submit" value="Agregar">
     </form>

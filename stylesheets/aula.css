@@ -8,6 +8,26 @@ body {
     align-items: center;
     height: 100vh;
 }
+a[href='./inicio.php'] {
+    position: absolute;
+    margin-top:2px ;
+    top: 10px;
+    left: 10px;
+}
+a {
+    display: inline-block;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
 
 .container {
     background-color: #fff;

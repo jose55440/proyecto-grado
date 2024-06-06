@@ -64,6 +64,7 @@ $meses = array(
 </head>
 <!-- Formulario con su js incluido en el mismo documento -->
 <body>
+    <a href="./inicio.php" >Inicio</a>
     <form action="../lib/takeReservation2.php" method="GET" onsubmit="validateForm(event)">
         <label for="idAula">Seleccion de aula</label>
         <select name="idAula" id="idAula">
@@ -105,8 +106,12 @@ $meses = array(
         <?php if($_SESSION['userCheked']['admin'] == true) { ?>
         <a href="createNewGroup.php">Crear Nuevo Grupo</a> <?php } ?>
         <br>
+        <a href="./ocupaciones.php">Comprobar ocupaciones</a>
+        <br>
         <input type="submit" value="Reservar">
+        
     </form>
+   
     <script>updateDays();</script>
 
     

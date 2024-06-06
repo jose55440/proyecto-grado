@@ -78,6 +78,9 @@ function checkOkupationToOcupation($idAula, $hora, $dia, $mes)
         'miércoles' => 'miercoles', // Asegúrate de que este mapeo coincida con los nombres de las columnas en tu base de datos
         'jueves' => 'jueves',
         'viernes' => 'viernes',
+        'sábado' => 'sabado',
+        'domingo' => 'domingo'
+        
     ];
 
     // Obtener el nombre del día en español
@@ -94,18 +97,26 @@ function checkOkupationToOcupation($idAula, $hora, $dia, $mes)
     // Con esto consigo el dia de la semana para comprobarlo en okupacion
     $dayColumn = $daysColumnMap[$dayNameSpanish];
 
+    if ($dayColumn=='sabado' || $dayColumn=='domingo'){
+        echo 'No puedes reservar sabados y domigos';
+        header("refresh:6;url=../views/takeReservation.php");
+        return true;
+    }else{
+        $sql = conectar()->prepare("SELECT $dayColumn FROM okupacion WHERE idAula = :idAula AND hora = :hora");
+        $sql->bindValue(':idAula', $idAula);
+        $sql->bindValue(':hora', $hora);
     
-    $sql = conectar()->prepare("SELECT $dayColumn FROM okupacion WHERE idAula = :idAula AND hora = :hora");
-    $sql->bindValue(':idAula', $idAula);
-    $sql->bindValue(':hora', $hora);
-
-    try {
-        $sql->execute();
-        $comprobante = $sql->fetchColumn();
-        return $comprobante == 1;
-    } catch (PDOException $e) {
-        throw new Exception('Error al acceder a la tabla okupacion');
+        try {
+            $sql->execute();
+            $comprobante = $sql->fetchColumn();
+            return $comprobante == 1;
+        } catch (PDOException $e) {
+            throw new Exception('Error al acceder a la tabla okupacion');
+        }
     }
+
+    
+   
 }
 
-// Poner un cuadrado verde o rojo segun si esta ocupada esa aula a esa hora ese dia y ese mes con ayuda del metodo checkOkupationToOcupation de okupacion.php y del metodo de checkReservation de ocupacion.inc.php
+// Poner un cuadrado verde o rojo segun si esta ocupada esa aula a esa hora ese dia y ese mes con ayuda del metodo checkOkupationToOcupation de okupacion.php y del metodo de checkReservation de ocupacion.inc.php 

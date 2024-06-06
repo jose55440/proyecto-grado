@@ -20,6 +20,7 @@ $pabellones = getAulasByLetter($idPabellon);
 </head>
 
 <body>
+<a href="./inicio.php" >Inicio</a>
     <div class="container">
         <h1>Detalles del Pabellón <?= $idPabellon?></h1>
         <div class="links-container">

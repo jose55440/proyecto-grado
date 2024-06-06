@@ -14,13 +14,26 @@ $pabellones = getPabellones();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Aula</title>
     <link rel="stylesheet" href="../stylesheets/createNewAula.css"> <!-- Enlace al archivo CSS -->
-
+    <script>
+      const validateForm= (event)=> {
+        var idAula = document.getElementById('idAula').value;
+        var idPabellon= document.getElementById('idPabellon').value;
+        var nombre= document.getElementById('nombre').value;
+        var capacidad= document.getElementById('capacidad').value;
+        
+        if (!idAula || !idPabellon || !nombre || !capacidad) {
+            alert('Por favor, completa los cambios necesarios');
+            event.preventDefault(); // Previene el envío del formulario
+        }
+    }
+    </script>
 </head>
 
 <body>
-    <form action="../lib/createNewAula2.php" method="get">
+<a href="./inicio.php" >Inicio</a>
+    <form action="../lib/createNewAula2.php" method="get" onsubmit="validateForm(event)">
         <label for="idAula">Id del Aula</label>
-        <input type="text" name="idAula" id="idAula" required>
+        <input type="text" name="idAula" id="idAula" required placeholder="EJ('003')">
         <br>
         <label for="idPabellon">Id del Pabellon</label>
         <select name="idPabellon" id="idPabellon">

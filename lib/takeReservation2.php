@@ -26,7 +26,7 @@ if (checkReservation($idAula, $idHora, $idMes, $idDia)) {
             die("Error al realizar la reserva: " . $e->getMessage());
         }
     }else{
-        echo 'Ese aula ya esta reservada';
+        echo '.  Ese aula ya esta reservada';
         header("refresh:3;url=../views/takeReservation.php");
     }
     

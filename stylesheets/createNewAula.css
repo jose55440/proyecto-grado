@@ -9,6 +9,12 @@
     align-items: center;
     box-sizing: border-box;
 }
+a[href='./inicio.php'] {
+    position: absolute;
+    margin-top:2px ;
+    top: 10px;
+    left: 10px;
+}
 
 /* Contenedor del formulario */
 form {

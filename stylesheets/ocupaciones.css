@@ -11,6 +11,14 @@ body {
     height: 100vh;
 }
 
+a[href='./inicio.php'] {
+    position: absolute;
+    margin-top:2px ;
+    top: 10px;
+    left: 10px;
+}
+
+
 /* Estilo para el contenedor principal */
 .container {
     width: 80%;

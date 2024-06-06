@@ -15,6 +15,7 @@ include '../BD/pabellon.inc.php';
 
 <body>
     <!-- Muestro todos los pabellones -->
+    <a href="./inicio.php" >Inicio</a>
     <div class="container">
         <?php foreach (getPabellones() as $key => $pabellon) { ?>
             <div>

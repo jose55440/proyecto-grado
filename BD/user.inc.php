@@ -26,7 +26,7 @@ function checkLogin($nre, $contrasena)
  
 
     // Verificar si el usuario existe y la contraseña(la contraseña esta cifrada) es correcta
-    if (password_verify($contrasena, $user['passworld'])) {
+    if  ($user && password_verify($contrasena, $user['passworld'])) {
         return $user;
     } else {
         return null;

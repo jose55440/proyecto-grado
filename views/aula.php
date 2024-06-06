@@ -1,5 +1,5 @@
 <?php
-require_once '../checkAdmin.php';
+require_once '../cheker.php';
 include '../BD/aula.inc.php';
 $idAula = $_GET['idAula'];
 $ocupacionAula = searchAulaById($idAula);
@@ -14,6 +14,8 @@ $ocupacionAula = searchAulaById($idAula);
     <link rel="stylesheet" href="../stylesheets/aula.css">
 </head>
 <body>
+
+<a href="./inicio.php" >Inicio</a>
     <div class="container">
         <h1>Ocupación del Aula: <?= $idAula ?></h1>
         <table>

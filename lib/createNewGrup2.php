@@ -10,9 +10,9 @@ $nombreCompleto = $_GET['nombreCompleto'];
 
 try {
     createNewGroup($alias, $nombreCompleto);
-    header("refresh:4;url=../views/createNewAula.php");
+    header("refresh:4;url=../views/createNewGroup.php");
 } catch (PDOException $e) {
-    throw new Exception("Error al generar el aula");
+    throw new Exception("Error al generar el grupo");
 
-    header("refresh:5;url=../views/createNewAula.php");
+    header("refresh:5;url=../views/createNewGroup.php");
 }

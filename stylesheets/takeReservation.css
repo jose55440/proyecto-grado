@@ -10,6 +10,14 @@ body {
     height: 100vh;
 }
 
+a[href='./inicio.php'] {
+    position: absolute;
+    margin-top:2px ;
+    top: 10px;
+    left: 10px;
+}
+
+
 /* Contenedor del formulario */
 form {
     background-color: #ffffff;
@@ -74,3 +82,21 @@ a:hover {
     color: #0056b3;
     text-decoration: underline;
 }
+
+
+button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+button:hover{
+    background-color: #0056b3;
+}
+
+
