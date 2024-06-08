@@ -2,6 +2,8 @@
 require_once '../cheker.php';
 include_once '../BD/aula.inc.php';
 include_once '../BD/grupo.inc.php';
+include_once '../BD/ocupacion.inc.php';
+include_once '../BD/okupacion.php';
 
 
 $idAulas = getAllAulas();
@@ -60,11 +62,14 @@ $meses = array(
                 diaSelect.add(option);
             }
         }
+
+        
     </script>
 </head>
 <!-- Formulario con su js incluido en el mismo documento -->
+
 <body>
-    <a href="./inicio.php" >Inicio</a>
+    <a href="./inicio.php">Inicio</a>
     <form action="../lib/takeReservation2.php" method="GET" onsubmit="validateForm(event)">
         <label for="idAula">Seleccion de aula</label>
         <select name="idAula" id="idAula">
@@ -72,8 +77,8 @@ $meses = array(
                 <option value="<?= $aula['idAula'] ?>"><?= $aula['idPabellon'] . '' . $aula['idAula'] ?></option>
             <?php } ?>
         </select>
-        <?php if($_SESSION['userCheked']['admin'] == true) { ?>
-        <a href="./createNewAula.php">Crear nueva aula</a> <?php } ?>
+        <?php if ($_SESSION['userCheked']['admin'] == true) { ?>
+            <a href="./createNewAula.php">Crear nueva aula</a> <?php } ?>
         <br>
         <label for="idHora">Hora</label>
         <select name="idHora" id="idHora">
@@ -100,22 +105,24 @@ $meses = array(
         <label for="idGrupo">Grupo</label>
         <select name="idGrupo" id="idGrupo">
             <?php foreach ($grupos as $grupo) { ?>
-                <option value=<?= $grupo['id']?>><?= $grupo['alias'] ?></option>
+                <option value=<?= $grupo['id'] ?>><?= $grupo['alias'] ?></option>
             <?php } ?>
         </select>
-        <?php if($_SESSION['userCheked']['admin'] == true) { ?>
-        <a href="createNewGroup.php">Crear Nuevo Grupo</a> <?php } ?>
+        <?php if ($_SESSION['userCheked']['admin'] == true) { ?>
+            <a href="createNewGroup.php">Crear Nuevo Grupo</a> <?php } ?>
         <br>
         <a href="./ocupaciones.php">Comprobar ocupaciones</a>
         <br>
         <input type="submit" value="Reservar">
         
     </form>
-   
-    <script>updateDays();</script>
+  
 
-    
+    <script>
+        updateDays();
+    </script>
+
+
 </body>
 
 </html>
-
