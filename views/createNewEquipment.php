@@ -38,7 +38,7 @@
         <select name="idAula" id="idAula" required>
             <!-- Muestro las aulas  -->
         <?php foreach (getAllAulas() as $key => $aula) { ?>
-            <option value="<?=$aula['idAula']?>"><?= $aula['idPabellon'].$aula['idAula'] ?></option>
+            <option value="<?=$aula['idAula']?>"><?= $aula['idAula'] ?></option>
         <?php } ?>
         </select>
         <br>

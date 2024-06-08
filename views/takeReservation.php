@@ -74,7 +74,7 @@ $meses = array(
         <label for="idAula">Seleccion de aula</label>
         <select name="idAula" id="idAula">
             <?php foreach ($idAulas as $aula) { ?>
-                <option value="<?= $aula['idAula'] ?>"><?= $aula['idPabellon'] . '' . $aula['idAula'] ?></option>
+                <option value="<?= $aula['idAula'] ?>"><?= $aula['idAula'] ?></option>
             <?php } ?>
         </select>
         <?php if ($_SESSION['userCheked']['admin'] == true) { ?>

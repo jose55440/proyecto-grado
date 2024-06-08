@@ -33,7 +33,7 @@ $pabellones = getPabellones();
 <a href="./inicio.php" >Inicio</a>
     <form action="../lib/createNewAula2.php" method="get" onsubmit="validateForm(event)">
         <label for="idAula">Id del Aula</label>
-        <input type="text" name="idAula" id="idAula" required placeholder="EJ('003')">
+        <input type="text" name="idAula" id="idAula" required placeholder="EJ('A003')">
         <br>
         <label for="idPabellon">Id del Pabellon</label>
         <select name="idPabellon" id="idPabellon">
