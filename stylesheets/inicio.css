@@ -56,7 +56,6 @@ a:hover {
     margin-right: 0;
 }
 
-
 /* Estilos para las reservas individuales */
 .reserva {
     margin-bottom: 10px; /* Espacio entre reservas */
@@ -71,4 +70,42 @@ a:hover {
     margin: 5px 0; /* Espacio entre elementos */
     font-size: 14px; /* Tamaño de fuente */
     color: #333; /* Color de texto */
+}
+
+/* Estilos para el formulario de carga de CSV */
+form {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilos para el input de archivo */
+input[type="file"] {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Estilos para el botón de enviar */
+input[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
 }

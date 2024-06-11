@@ -35,12 +35,28 @@ $hora = array(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <link rel="stylesheet" href="../stylesheets/inicio.css"> <!-- Enlace al archivo CSS -->
+    <script>
+      const validateForm= (event)=> {
+        var csvFile = document.getElementById('csvFile').value;
+       
+        
+        if (!csvFile) {
+            alert('Por favor, completa los cambios necesarios');
+            event.preventDefault(); // Previene el envío del formulario
+        }
+    }
+    </script>
 </head>
 
 <body>
     <div class="container">
         <!-- Si el usuario es admin puede crear y borrar -->
         <?php if ($_SESSION['userCheked']['admin'] == true) { ?>
+            <form action="../lib/insertCsv.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="csvFile" id="csvFile" accept=".csv" required>
+                <input type="submit" value="Insertar CSV">
+            </form>
+
             <div class="navbar">
                 <a href="./createNewUser.php">Crear Usuario</a>
                 <a href="./createNewPabellon.php">Crear Pabellon</a>
@@ -62,17 +78,17 @@ $hora = array(
         <!-- Muestra las reservas del usuario -->
 
         <?php foreach (getAllReservations() as $key => $reserva) {
-            $pabellon=searchAulaByIdToOkupation($reserva['idAula']); ?>
-    <div class="reserva">
-        
-        <p>Aula: <?= $pabellon['idPabellon'].$reserva['idAula'] ?></p>
-        <p>Hora: <?= $hora[$reserva['idHora']-1] ?></p>
-        <p>Dia: <?= $reserva['idDia'] ?></p>
-        <p>Mes: <?= $meses[$reserva['idMes']-1] ?></p>
-        <p>Grupo: <?= getAliasGrupById($reserva['idGrupo']) ?></p>
-        <a href="../lib/deleteReservation.php?idAula=<?= $reserva['idAula'] ?>&idHora=<?= $reserva['idHora'] ?>&idMes=<?= $reserva['idMes'] ?>&idDia=<?= $reserva['idDia'] ?>">Quitar reserva</a>
-    </div>
-<?php } ?>
+            $pabellon = searchAulaByIdToOkupation($reserva['idAula']); ?>
+            <div class="reserva">
+
+                <p>Aula: <?= $pabellon['idPabellon'] . $reserva['idAula'] ?></p>
+                <p>Hora: <?= $hora[$reserva['idHora'] - 1] ?></p>
+                <p>Dia: <?= $reserva['idDia'] ?></p>
+                <p>Mes: <?= $meses[$reserva['idMes'] - 1] ?></p>
+                <p>Grupo: <?= getAliasGrupById($reserva['idGrupo']) ?></p>
+                <a href="../lib/deleteReservation.php?idAula=<?= $reserva['idAula'] ?>&idHora=<?= $reserva['idHora'] ?>&idMes=<?= $reserva['idMes'] ?>&idDia=<?= $reserva['idDia'] ?>">Quitar reserva</a>
+            </div>
+        <?php } ?>
 
 
     </div>
