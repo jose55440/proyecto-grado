@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2024 a las 10:57:47
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 12-06-2024 a las 15:34:11
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,11 @@ CREATE TABLE `aula` (
 --
 
 INSERT INTO `aula` (`idAula`, `idPabellon`, `nombre`, `capacidadAula`) VALUES
+('0008', 'E', 'Aula 0008', 12),
+('003', 'A', 'si', 25),
+('005', 'A', 'Aula A005', 12),
 ('123', 'A', 'primera', 12),
+('1234', 'A', 'Informatica', 15),
 ('312', 'A', 'adwad', 12),
 ('321', 'A', 'primer pabellón ', 123);
 
@@ -53,8 +57,17 @@ CREATE TABLE `equipamiento` (
   `id` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `numSerie` varchar(200) NOT NULL,
-  `id-aula` varchar(200) NOT NULL
+  `idAula` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `equipamiento`
+--
+
+INSERT INTO `equipamiento` (`id`, `nombre`, `numSerie`, `idAula`) VALUES
+(1, 'ordenador', '123123123E', '003'),
+(2, 'awdawdawd', '1231231231', '312'),
+(3, 'awdawdawd', '1231231231', '312');
 
 -- --------------------------------------------------------
 
@@ -80,8 +93,17 @@ CREATE TABLE `espera` (
 CREATE TABLE `grupo` (
   `id` int(11) NOT NULL,
   `alias` varchar(200) NOT NULL,
-  `nombre-completo` varchar(200) NOT NULL
+  `nombreCompleto` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `grupo`
+--
+
+INSERT INTO `grupo` (`id`, `alias`, `nombreCompleto`) VALUES
+(1, 'DAW', 'Desarrollo web multimedia'),
+(2, 'DAM', 'Desarrollo multiplataforma de aplicaciones'),
+(3, 'IB', 'Igiene bucodental');
 
 -- --------------------------------------------------------
 
@@ -90,13 +112,25 @@ CREATE TABLE `grupo` (
 --
 
 CREATE TABLE `ocupacion` (
-  `id-aula` varchar(200) NOT NULL DEFAULT '',
-  `id-hora` int(11) NOT NULL,
-  `id-dia` int(11) NOT NULL,
-  `id-mes` int(11) NOT NULL,
-  `id-grupo` int(11) NOT NULL,
+  `idAula` varchar(200) NOT NULL,
+  `idHora` int(11) NOT NULL,
+  `idDia` int(11) NOT NULL,
+  `idMes` int(11) NOT NULL,
+  `idGrupo` int(11) NOT NULL,
   `idProfesor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ocupacion`
+--
+
+INSERT INTO `ocupacion` (`idAula`, `idHora`, `idDia`, `idMes`, `idGrupo`, `idProfesor`) VALUES
+('0008', 1, 1, 1, 1, 1666391),
+('0008', 2, 1, 1, 1, 1666391),
+('003', 1, 1, 1, 1, 1231231),
+('123', 2, 1, 1, 1, 1231231),
+('312', 1, 1, 1, 1, 1216345),
+('312', 3, 1, 1, 1, 1216345);
 
 -- --------------------------------------------------------
 
@@ -356,15 +390,19 @@ INSERT INTO `okupacion` (`idAula`, `hora`, `lunes`, `martes`, `miercoles`, `juev
 
 CREATE TABLE `pabellon` (
   `idPabellon` varchar(200) NOT NULL,
-  `Nombre` int(11) NOT NULL
+  `nombre` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `pabellon`
 --
 
-INSERT INTO `pabellon` (`idPabellon`, `Nombre`) VALUES
-('A', 0);
+INSERT INTO `pabellon` (`idPabellon`, `nombre`) VALUES
+('A', 'Pabellon A'),
+('B', 'Pabellon B'),
+('C', 'Pabellon C'),
+('D', 'Pabellon D'),
+('E', 'Pabellon E');
 
 -- --------------------------------------------------------
 
@@ -388,6 +426,7 @@ INSERT INTO `usuario` (`nre`, `passworld`, `nombre`, `apellidos`, `admin`) VALUE
 (1216345, '$2y$10$QN9etNcyCBW0mlIgNjO7hOTJuYKUEUsiUEzBYZ8oc1E3NeW1X3A5S', 'Franshesca', 'Josean Nesteres Villegas', 0),
 (1231231, '$2y$10$ULesk3kcLL1/5IMSJyc5wO1zi.OjQCbUzILC71IPhVXq91xA1XJOe', 'test', 'test', 0),
 (1666391, '$2y$10$ULesk3kcLL1/5IMSJyc5wO1zi.OjQCbUzILC71IPhVXq91xA1XJOe', 'Jose Manuel', 'Garcia Sanchez', 1),
+(1666392, '$2y$10$zcQPprimyrHjgz94CRnwH.wQLyD0X9FuTxdFGwDBA.hjbyBVVD/.q', 'test2', 'test2', 0),
 (4165567, '$2y$10$ULesk3kcLL1/5IMSJyc5wO1zi.OjQCbUzILC71IPhVXq91xA1XJOe', 'Junior Fabricio', 'Chipantashi Garzon', 1);
 
 --
@@ -406,7 +445,7 @@ ALTER TABLE `aula`
 --
 ALTER TABLE `equipamiento`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_aula-equipamiento` (`id-aula`);
+  ADD KEY `fk_aula-equipamiento` (`idAula`);
 
 --
 -- Indices de la tabla `espera`
@@ -425,8 +464,8 @@ ALTER TABLE `grupo`
 -- Indices de la tabla `ocupacion`
 --
 ALTER TABLE `ocupacion`
-  ADD PRIMARY KEY (`id-aula`,`id-hora`,`id-dia`,`id-mes`),
-  ADD KEY `fk_grupo_ocupacion` (`id-grupo`),
+  ADD PRIMARY KEY (`idAula`,`idHora`,`idDia`,`idMes`),
+  ADD KEY `fk_grupo_ocupacion` (`idGrupo`),
   ADD KEY `fk_ocupacion-profesor` (`idProfesor`);
 
 --
@@ -455,13 +494,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `equipamiento`
 --
 ALTER TABLE `equipamiento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -477,7 +516,7 @@ ALTER TABLE `aula`
 -- Filtros para la tabla `equipamiento`
 --
 ALTER TABLE `equipamiento`
-  ADD CONSTRAINT `fk_aula-equipamiento` FOREIGN KEY (`id-aula`) REFERENCES `aula` (`idAula`);
+  ADD CONSTRAINT `fk_aula-equipamiento` FOREIGN KEY (`idAula`) REFERENCES `aula` (`idAula`);
 
 --
 -- Filtros para la tabla `espera`
@@ -490,9 +529,9 @@ ALTER TABLE `espera`
 -- Filtros para la tabla `ocupacion`
 --
 ALTER TABLE `ocupacion`
-  ADD CONSTRAINT `fk_grupo_ocupacion` FOREIGN KEY (`id-grupo`) REFERENCES `grupo` (`id`),
+  ADD CONSTRAINT `fk_grupo_ocupacion` FOREIGN KEY (`idGrupo`) REFERENCES `grupo` (`id`),
   ADD CONSTRAINT `fk_ocupacion-profesor` FOREIGN KEY (`idProfesor`) REFERENCES `usuario` (`nre`),
-  ADD CONSTRAINT `fk_opcupacion-aula` FOREIGN KEY (`id-aula`) REFERENCES `aula` (`idAula`);
+  ADD CONSTRAINT `fk_opcupacion-aula` FOREIGN KEY (`idAula`) REFERENCES `aula` (`idAula`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
