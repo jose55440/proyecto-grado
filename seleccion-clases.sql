@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2024 a las 15:34:11
+-- Tiempo de generación: 14-06-2024 a las 12:27:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `aula` (
   `idAula` varchar(200) NOT NULL,
   `idPabellon` varchar(200) NOT NULL,
   `nombre` varchar(200) NOT NULL,
-  `capacidadAula` int(11) NOT NULL
+  `capacidadAula` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -39,13 +39,9 @@ CREATE TABLE `aula` (
 --
 
 INSERT INTO `aula` (`idAula`, `idPabellon`, `nombre`, `capacidadAula`) VALUES
-('0008', 'E', 'Aula 0008', 12),
-('003', 'A', 'si', 25),
-('005', 'A', 'Aula A005', 12),
-('123', 'A', 'primera', 12),
-('1234', 'A', 'Informatica', 15),
-('312', 'A', 'adwad', 12),
-('321', 'A', 'primer pabellón ', 123);
+('A001', 'A', 'Aula A001', 12),
+('A002', 'A', 'adawd', 12),
+('A003', 'A', 'Aula A003', 12);
 
 -- --------------------------------------------------------
 
@@ -65,9 +61,7 @@ CREATE TABLE `equipamiento` (
 --
 
 INSERT INTO `equipamiento` (`id`, `nombre`, `numSerie`, `idAula`) VALUES
-(1, 'ordenador', '123123123E', '003'),
-(2, 'awdawdawd', '1231231231', '312'),
-(3, 'awdawdawd', '1231231231', '312');
+(6, 'awdaw', '123123123', 'A001');
 
 -- --------------------------------------------------------
 
@@ -103,7 +97,10 @@ CREATE TABLE `grupo` (
 INSERT INTO `grupo` (`id`, `alias`, `nombreCompleto`) VALUES
 (1, 'DAW', 'Desarrollo web multimedia'),
 (2, 'DAM', 'Desarrollo multiplataforma de aplicaciones'),
-(3, 'IB', 'Igiene bucodental');
+(3, 'IB', 'Igiene bucodental'),
+(4, 'DAW', 'Hola'),
+(5, 'ASD', 'awdawda'),
+(6, 'AWDAWDAS', '12312awdaw');
 
 -- --------------------------------------------------------
 
@@ -125,12 +122,7 @@ CREATE TABLE `ocupacion` (
 --
 
 INSERT INTO `ocupacion` (`idAula`, `idHora`, `idDia`, `idMes`, `idGrupo`, `idProfesor`) VALUES
-('0008', 1, 1, 1, 1, 1666391),
-('0008', 2, 1, 1, 1, 1666391),
-('003', 1, 1, 1, 1, 1231231),
-('123', 2, 1, 1, 1, 1231231),
-('312', 1, 1, 1, 1, 1216345),
-('312', 3, 1, 1, 1, 1216345);
+('A001', 1, 1, 1, 1, 1666391);
 
 -- --------------------------------------------------------
 
@@ -402,7 +394,8 @@ INSERT INTO `pabellon` (`idPabellon`, `nombre`) VALUES
 ('B', 'Pabellon B'),
 ('C', 'Pabellon C'),
 ('D', 'Pabellon D'),
-('E', 'Pabellon E');
+('E', 'Pabellon E'),
+('r', 'adawdwa');
 
 -- --------------------------------------------------------
 
@@ -423,6 +416,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`nre`, `passworld`, `nombre`, `apellidos`, `admin`) VALUES
+(112, '$2y$10$QMy9fIxB7d/wotysN7mSIeI6DD.40sBJf04CsgnfCiwTS04LzUks.', 'adaw', 'jkl', 0),
 (1216345, '$2y$10$QN9etNcyCBW0mlIgNjO7hOTJuYKUEUsiUEzBYZ8oc1E3NeW1X3A5S', 'Franshesca', 'Josean Nesteres Villegas', 0),
 (1231231, '$2y$10$ULesk3kcLL1/5IMSJyc5wO1zi.OjQCbUzILC71IPhVXq91xA1XJOe', 'test', 'test', 0),
 (1666391, '$2y$10$ULesk3kcLL1/5IMSJyc5wO1zi.OjQCbUzILC71IPhVXq91xA1XJOe', 'Jose Manuel', 'Garcia Sanchez', 1),
@@ -494,13 +488,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `equipamiento`
 --
 ALTER TABLE `equipamiento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -516,7 +510,7 @@ ALTER TABLE `aula`
 -- Filtros para la tabla `equipamiento`
 --
 ALTER TABLE `equipamiento`
-  ADD CONSTRAINT `fk_aula-equipamiento` FOREIGN KEY (`idAula`) REFERENCES `aula` (`idAula`);
+  ADD CONSTRAINT `fk_aula-equipamiento` FOREIGN KEY (`idAula`) REFERENCES `aula` (`idAula`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `espera`
@@ -529,9 +523,9 @@ ALTER TABLE `espera`
 -- Filtros para la tabla `ocupacion`
 --
 ALTER TABLE `ocupacion`
-  ADD CONSTRAINT `fk_grupo_ocupacion` FOREIGN KEY (`idGrupo`) REFERENCES `grupo` (`id`),
-  ADD CONSTRAINT `fk_ocupacion-profesor` FOREIGN KEY (`idProfesor`) REFERENCES `usuario` (`nre`),
-  ADD CONSTRAINT `fk_opcupacion-aula` FOREIGN KEY (`idAula`) REFERENCES `aula` (`idAula`);
+  ADD CONSTRAINT `fk_grupo_ocupacion` FOREIGN KEY (`idGrupo`) REFERENCES `grupo` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_ocupacion-profesor` FOREIGN KEY (`idProfesor`) REFERENCES `usuario` (`nre`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_opcupacion-aula` FOREIGN KEY (`idAula`) REFERENCES `aula` (`idAula`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
