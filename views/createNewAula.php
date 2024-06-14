@@ -56,7 +56,7 @@ $pabellones = getPabellones();
             <?php foreach (getAllAulas() as $key => $aula) { ?>
                 <div class="card">
                     <div>
-                        <p>Aula: <?= $aula['idPabellon'] . $aula['idAula'] ?></p>
+                        <p>Aula: <?= $aula['idAula'] ?></p>
                         <p>Nombre: <?= $aula['nombre'] ?></p>
                         <p>Capacidad: <?= $aula['capacidadAula'] ?></p>
                     </div>
