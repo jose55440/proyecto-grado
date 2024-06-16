@@ -36,15 +36,15 @@ $hora = array(
     <title>Inicio</title>
     <link rel="stylesheet" href="../stylesheets/inicio.css"> <!-- Enlace al archivo CSS -->
     <script>
-      const validateForm= (event)=> {
-        var csvFile = document.getElementById('csvFile').value;
-       
-        
-        if (!csvFile) {
-            alert('Por favor, completa los cambios necesarios');
-            event.preventDefault(); // Previene el envío del formulario
+        const validateForm = (event) => {
+            var csvFile = document.getElementById('csvFile').value;
+
+
+            if (!csvFile) {
+                alert('Por favor, completa los cambios necesarios');
+                event.preventDefault(); // Previene el envío del formulario
+            }
         }
-    }
     </script>
 </head>
 
@@ -52,10 +52,8 @@ $hora = array(
     <div class="container">
         <!-- Si el usuario es admin puede crear y borrar -->
         <?php if ($_SESSION['userCheked']['admin'] == true) { ?>
-            <form action="../lib/insertCsv.php" method="post" enctype="multipart/form-data">
-                <input type="file" name="csvFile" id="csvFile" accept=".csv" required>
-                <input type="submit" value="Insertar CSV">
-            </form>
+
+
 
             <div class="navbar">
                 <a href="./createNewUser.php">Crear Usuario</a>
@@ -92,6 +90,16 @@ $hora = array(
 
 
     </div>
+    <?php if ($_SESSION['userCheked']['admin'] == true) { ?>
+    <form action="../lib/insertOkupationCsv.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="csvFile" id="csvFile" accept=".csv" required>
+        <input type="submit" value="Insertar CSV">
+    </form>
+    <form action="../lib/insertAulaCsv.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="csvFile" id="csvFile" accept=".csv" required>
+        <input type="submit" value="Insertar CSV">
+    </form>
+    <?php } ?>
 </body>
 
 </html>
