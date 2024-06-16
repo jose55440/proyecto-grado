@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2024 a las 12:27:34
+-- Tiempo de generación: 17-06-2024 a las 01:47:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,9 +39,71 @@ CREATE TABLE `aula` (
 --
 
 INSERT INTO `aula` (`idAula`, `idPabellon`, `nombre`, `capacidadAula`) VALUES
-('A001', 'A', 'Aula A001', 12),
-('A002', 'A', 'adawd', 12),
-('A003', 'A', 'Aula A003', 12);
+('A001', 'A', 'INFORM�TICA', NULL),
+('A002', 'A', '', NULL),
+('A003', 'A', 'ADMINISTRATIVO', NULL),
+('A004', 'A', 'ADMINISTRATIVO', NULL),
+('A005', 'A', '', NULL),
+('A006', 'A', '', NULL),
+('A007', 'A', 'LAB IDIOMAS', NULL),
+('A101', 'A', 'PLUMIER', NULL),
+('A102', 'A', 'AUDIOVISUALES', NULL),
+('A103', 'A', '', NULL),
+('A104', 'A', '', NULL),
+('A105', 'A', 'COMPENSATORIA', NULL),
+('A106', 'A', 'LOGOPEDA', NULL),
+('A107', 'A', 'PT', NULL),
+('A108', 'A', 'PT', NULL),
+('A201', 'A', '', NULL),
+('A202', 'A', 'LAB. BIOLOG�A', NULL),
+('A203', 'A', '', NULL),
+('A204', 'A', 'LAB. F�SICA', NULL),
+('A205', 'A', '', NULL),
+('A206', 'A', '', NULL),
+('A207', 'A', '', NULL),
+('A208', 'A', '', NULL),
+('A209', 'A', '', NULL),
+('A210', 'A', '', NULL),
+('A211', 'A', '', NULL),
+('A212', 'A', '', NULL),
+('B001', 'B', 'GIMNASIO', NULL),
+('B002', 'B', 'SAL�N DE ACTOS', NULL),
+('BIBLIOTECA', 'A', '', NULL),
+('C001', 'C', 'TECNOLOG�A 1', NULL),
+('C002', 'C', 'TECNOLOG�A 2', NULL),
+('C003', 'C', 'DIBUJO', NULL),
+('CONSERJERIA', 'A', '', NULL),
+('D001', 'D', 'INFORM�TICA', NULL),
+('D002', 'D', 'INFORM�TICA', NULL),
+('D003', 'D', 'INFORM�TICA', NULL),
+('D004', 'D', 'IND. ALIMENTARIAS', NULL),
+('D005', 'D', 'M�SICA', NULL),
+('D101', 'D', '', NULL),
+('D102', 'D', '', NULL),
+('D103', 'D', '', NULL),
+('D104', 'D', 'FPB ORDENADORES', NULL),
+('D105', 'D', '', NULL),
+('D106', 'D', '', NULL),
+('D107', 'D', '', NULL),
+('D108', 'D', '', NULL),
+('DEP1', 'A', 'RMI', NULL),
+('DEP10', 'D', 'INFORM�TICA', NULL),
+('DEP11', 'D', 'M�SICA', NULL),
+('DEP12', 'C', 'TECNOLOG�A', NULL),
+('DEP2', 'A', 'LENGUA', NULL),
+('DEP3', 'A', ' FILOSOF�A', NULL),
+('DEP5', 'A', 'BIOLOG�A, F�SICA Y QU�MICA', NULL),
+('DEP6', 'A', 'ADMINISTRATIVO', NULL),
+('DEP7', 'A', 'GEOGRAF�A', NULL),
+('DEP8', 'D', 'INGL�S', NULL),
+('DEP9', 'D', 'MATEM�TICAS', NULL),
+('DIRECCION', 'A', '', NULL),
+('JEFATURA DE ESTUDIOS', 'A', '', NULL),
+('OFICINA', 'A', '', NULL),
+('ORIENTACION', 'A', '', NULL),
+('PEDAGOGIA TERAPEUTICA', 'A', '', NULL),
+('SALA PROFESORES', 'A', '', NULL),
+('SECRETARIA', 'A', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -55,13 +117,6 @@ CREATE TABLE `equipamiento` (
   `numSerie` varchar(200) NOT NULL,
   `idAula` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `equipamiento`
---
-
-INSERT INTO `equipamiento` (`id`, `nombre`, `numSerie`, `idAula`) VALUES
-(6, 'awdaw', '123123123', 'A001');
 
 -- --------------------------------------------------------
 
@@ -116,13 +171,6 @@ CREATE TABLE `ocupacion` (
   `idGrupo` int(11) NOT NULL,
   `idProfesor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `ocupacion`
---
-
-INSERT INTO `ocupacion` (`idAula`, `idHora`, `idDia`, `idMes`, `idGrupo`, `idProfesor`) VALUES
-('A001', 1, 1, 1, 1, 1666391);
 
 -- --------------------------------------------------------
 
@@ -199,12 +247,12 @@ INSERT INTO `okupacion` (`idAula`, `hora`, `lunes`, `martes`, `miercoles`, `juev
 ('A103', 4, 1, 1, 1, 1, 1),
 ('A103', 5, 1, 1, 1, 1, 0),
 ('A103', 6, 0, 1, 1, 1, 1),
-('A104', 1, 1, 1, 1, 1, 1),
-('A104', 2, 1, 1, 0, 1, 1),
-('A104', 3, 1, 1, 1, 0, 1),
-('A104', 4, 1, 1, 0, 1, 0),
-('A104', 5, 0, 0, 1, 1, 1),
-('A104', 6, 1, 1, 1, 1, 1),
+('A104 ', 1, 1, 1, 1, 1, 1),
+('A104 ', 2, 1, 1, 0, 1, 1),
+('A104 ', 3, 1, 1, 1, 0, 1),
+('A104 ', 4, 1, 1, 0, 1, 0),
+('A104 ', 5, 0, 0, 1, 1, 1),
+('A104 ', 6, 1, 1, 1, 1, 1),
 ('A201', 1, 1, 1, 1, 1, 1),
 ('A201', 2, 1, 0, 1, 1, 1),
 ('A201', 3, 1, 1, 1, 1, 1),
@@ -393,9 +441,7 @@ INSERT INTO `pabellon` (`idPabellon`, `nombre`) VALUES
 ('A', 'Pabellon A'),
 ('B', 'Pabellon B'),
 ('C', 'Pabellon C'),
-('D', 'Pabellon D'),
-('E', 'Pabellon E'),
-('r', 'adawdwa');
+('D', 'Pabellon D');
 
 -- --------------------------------------------------------
 
