@@ -2,11 +2,11 @@
 require_once '../checkAdmin.php';
 include_once '../BD/okupacion.php';
 
-function upLoadCSV($archivo) {
+function upLoadCSV() {
     $datos = []; // Array para almacenar los datos del CSV
 
     // Abre el archivo CSV en modo de lectura
-    if (($handle = fopen($archivo, "r")) !== false) {
+    if (($handle = fopen($_POST['csvFile'], "r")) !== false) {
         // Itera sobre cada fila en el archivo CSV
         while (($data = fgetcsv($handle, 1000, ",")) !== false) {
             $fila = []; // Array para almacenar los datos de cada fila
