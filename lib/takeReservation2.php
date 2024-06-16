@@ -18,7 +18,7 @@ if (checkReservation($idAula, $idHora, $idMes, $idDia)) {
     header("refresh:3;url=../views/takeReservation.php");
 } else {
     // Comprueba que no este reservada en okupacion
-    if (!checkOkupationToOcupation($pabellon['idPabellon'].$idAula,$idHora,$idDia,$idMes)){
+    if (!checkOkupationToOcupation($idAula,$idHora,$idDia,$idMes)){
         try {
             createReservation($idAula, $idHora, $idMes, $idDia, $idGrupo, $idUsuario);
             header("Location: ../views/inicio.php");
@@ -26,7 +26,7 @@ if (checkReservation($idAula, $idHora, $idMes, $idDia)) {
             die("Error al realizar la reserva: " . $e->getMessage());
         }
     }else{
-        echo '.  Ese aula ya esta reservada';
+        echo 'Ese aula ya esta reservada';
         header("refresh:3;url=../views/takeReservation.php");
     }
     

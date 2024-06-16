@@ -31,7 +31,7 @@ function getIdAulas()
 function getAulasByLetter($letter)
 {
     // Preparar la consulta SQL
-    $sql = conectar()->prepare('SELECT DISTINCT(idAula) FROM `okupacion` WHERE idAula LIKE :letter');
+    $sql = conectar()->prepare('SELECT idAula FROM `aula` WHERE  idPabellon like :letter');
 
     // Bind del valor con el comodín %
     $sql->bindValue(':letter', $letter . '%');

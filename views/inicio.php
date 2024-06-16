@@ -79,7 +79,7 @@ $hora = array(
             $pabellon = searchAulaByIdToOkupation($reserva['idAula']); ?>
             <div class="reserva">
 
-                <p>Aula: <?= $pabellon['idPabellon'] . $reserva['idAula'] ?></p>
+                <p>Aula: <?= $reserva['idAula'] ?></p>
                 <p>Hora: <?= $hora[$reserva['idHora'] - 1] ?></p>
                 <p>Dia: <?= $reserva['idDia'] ?></p>
                 <p>Mes: <?= $meses[$reserva['idMes'] - 1] ?></p>
@@ -91,11 +91,14 @@ $hora = array(
 
     </div>
     <?php if ($_SESSION['userCheked']['admin'] == true) { ?>
+    
     <form action="../lib/insertOkupationCsv.php" method="POST" enctype="multipart/form-data">
+        <h4>Insertar ocupaciones</h4>
         <input type="file" name="csvFile" id="csvFile" accept=".csv" required>
         <input type="submit" value="Insertar CSV">
     </form>
     <form action="../lib/insertAulaCsv.php" method="POST" enctype="multipart/form-data">
+    <h4>Insertar aulas</h4>
         <input type="file" name="csvFile" id="csvFile" accept=".csv" required>
         <input type="submit" value="Insertar CSV">
     </form>
