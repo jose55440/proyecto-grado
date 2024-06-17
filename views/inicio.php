@@ -80,6 +80,7 @@ $hora = array(
             <div class="reserva">
 
                 <p>Aula: <?= $reserva['idAula'] ?></p>
+                <p>Nombre Aula: <?= $pabellon['nombre'] ?></p>
                 <p>Hora: <?= $hora[$reserva['idHora'] - 1] ?></p>
                 <p>Dia: <?= $reserva['idDia'] ?></p>
                 <p>Mes: <?= $meses[$reserva['idMes'] - 1] ?></p>
